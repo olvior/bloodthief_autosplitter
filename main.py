@@ -5,47 +5,22 @@ import mss
 
 import asyncio
 
-
 get_size_screenshot = ImageGrab.grab()
 width, height = get_size_screenshot.size
 
-def setup():
-    good = False
-
-    while not good:
-        print("Make the show \"Reached Checkpoint\" within 3 seconds")
-        time.sleep(3)
-        
-        screenshot = ImageGrab.grab(bbox = (844, 658, 212+844, 33+658)).convert('L')
-        screenshot.save("image.png", "PNG")
-        screenshot.show()
-        
-        good = False if input("Does that image show the reached checkpoint text? [Y]/n").lower() == 'n' else True
-        if not good:
-            print("You may have missed the window, or you may want to change the values for the screenshot")
-
-go_through_setup_str = input("Setup? [Y]/n ").lower()
-go_through_setup = False if go_through_setup_str == 'n' else True
-
-if go_through_setup:
-    setup()
+sct = mss.mss() # mss screenshot object
 
 
-sct = mss.mss()
+#def r_press():
+#    global restarts
+#    restarts += 1
+#    split()
+#    print(f"restart no. {restarts}")
 
-##################
-# setup complete #
-##################
+#from pynput import keyboard
 
-def r_press():
-    global restarts
-    restarts += 1
-    split()
-    print(f"restart no. {restarts}")
-
-from pynput import keyboard
-
-h = keyboard.GlobalHotKeys({'r': r_press}).start()
+#h = keyboard.GlobalHotKeys({'r': r_press}).start()
+# hotkey stuff not working at the moment
 
 class ScreenShotArea():
     def __init__(self, bbox_ratio):
@@ -55,7 +30,6 @@ class ScreenShotArea():
                         "width": int(width*bbox_ratio[2]) - int(width*bbox_ratio[0]),
                         "height": int(height*bbox_ratio[3]) - int(height*bbox_ratio[1])}
 
-        print(self.monitor)
     def take_screen_shot(self):
         self.current_image = sct.grab(self.monitor)
         self.image_array = np.array(self.current_image).sum(axis=-1) // 3
@@ -133,7 +107,7 @@ end_monitor = MonitorVariable(timer_area, "images/timerzero.png", 84660, on_end_
 
 variable_monitors = [start_timer_monitor, checkpoint_monitor, key_message_monitor, end_monitor, secret_message_monitor]
 
-wait_time = 0.05
+wait_time = 0.03
 
 potential_run_end = 0
 run_start_time = 0
@@ -147,7 +121,8 @@ is_in_run = False
 
 async def main(app):
     global is_in_run
-    print("app", app)
+
+    start_message_said = False
     while True:
         time_start = time.time()
         
@@ -170,6 +145,11 @@ async def main(app):
             await wsock.set_game_time(time.time() - run_start_time - restarts * restart_time)
         await asyncio.sleep(max(wait_time - (time_end - time_start), 0))
 
+        if not start_message_said:
+            print("Please connect livesplit to ws://localhost:8001")
+            print("Connect before you play")
+            start_message_said = True
+
 from wsock import app, web
 import wsock
 
@@ -180,4 +160,3 @@ app.on_startup.append(start_background_tasks)
 
 web.run_app(app, port=8001)
 
-print("task created")
