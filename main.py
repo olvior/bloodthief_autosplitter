@@ -1,12 +1,18 @@
 from PIL import ImageGrab, Image
 import numpy as np
 import time
+import json
 import mss
 
 import asyncio
 
-get_size_screenshot = ImageGrab.grab()
-width, height = get_size_screenshot.size
+with open("config.json", 'r') as f:
+    config_dict = json.load(f)
+
+
+width = int(config_dict["width"])
+height = int(config_dict["height"])
+wait_time = config_dict["wait_time"]
 
 sct = mss.mss() # mss screenshot object
 
@@ -106,8 +112,6 @@ start_timer_monitor = MonitorVariable(timer_area, "images/timerzero.png", 0, res
 end_monitor = MonitorVariable(timer_area, "images/timerzero.png", 84660, on_end_timer, True)
 
 variable_monitors = [start_timer_monitor, checkpoint_monitor, key_message_monitor, end_monitor, secret_message_monitor]
-
-wait_time = 0.03
 
 potential_run_end = 0
 run_start_time = 0
