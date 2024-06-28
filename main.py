@@ -18,6 +18,8 @@ current_splits = routes[current_route]["splits"]
 width = int(config_dict["width"])
 height = int(config_dict["height"])
 
+end_screen_cost = int(config_dict["end_cost"])
+
 wait_time = config_dict["wait_time"]
 
 sct = mss.mss() # mss screenshot object
@@ -124,7 +126,7 @@ key_message_monitor = MonitorVariable(text_area, "images/thatonekeyintut.png", 0
 secret_message_monitor = MonitorVariable(text_area, "images/secret.png", 0, split, True, 2)
 
 start_timer_monitor = MonitorVariable(timer_area, "images/timerzero.png", 0, reset_timer, True)
-end_monitor = MonitorVariable(timer_area, "images/timerzero.png", 84660, on_end_timer, True)
+end_monitor = MonitorVariable(timer_area, "images/timerzero.png", end_screen_cost, on_end_timer, True)
 # -1 = end, 1 = checkpoint, 2 = secret, 3 = thatonekey
 
 variable_monitors = [start_timer_monitor, checkpoint_monitor, key_message_monitor, end_monitor, secret_message_monitor]

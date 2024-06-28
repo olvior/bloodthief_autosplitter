@@ -1,4 +1,5 @@
 from PIL import ImageGrab, Image
+import numpy as np
 import time
 import json
 
@@ -41,6 +42,13 @@ def take_sceenshots():
         screenshot.show()
         print("Rename the image taken now and replace the image you want to use with this one")
         input("Press enter when done")
+
+        choice = input("Was this screenshot of the timer 00:00? y/[N]").lower()
+        if choice == 'y':
+            np_image = np.asarray(screenshot)
+            cost = (np_image*(np_image==255)).sum()
+            config_dict["end_cost"] = int(cost)
+            print(cost)
 
         print("\n\n\n")
         a = input("Take another screenshot? [Y]/n").lower()
@@ -87,7 +95,7 @@ while not done:
         change_settings()
 
 
-    choice = input("Do you want to continue? y/N ").lower()
+    choice = input("Do you want to continue? y/[N] ").lower()
     
     if not choice == "y":
         done = True
