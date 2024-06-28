@@ -1,5 +1,9 @@
 {
     "width": 1920,
     "height": 1080,
-    "wait_time": 0.03
+    "wait_time": 0.03,
+    "routes": [
+        {"name": "Tutorial", "splits": [1, 1, 2, 3, -1]}
+
+    ]
 }
