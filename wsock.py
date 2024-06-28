@@ -12,6 +12,7 @@ async def wshandle(request):
     ws = web.WebSocketResponse()
     await ws.prepare(request)
    
+    print("Connected")
     async for msg in ws:
         if msg.type == web.WSMsgType.text:
             #print(msg)
