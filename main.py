@@ -10,8 +10,14 @@ with open("config.json", 'r') as f:
     config_dict = json.load(f)
 
 
+current_split = 0
+current_route = 0
+routes = config_dict["routes"]
+current_splits = routes[current_route]["splits"]
+
 width = int(config_dict["width"])
 height = int(config_dict["height"])
+
 wait_time = config_dict["wait_time"]
 
 sct = mss.mss() # mss screenshot object
@@ -41,12 +47,13 @@ class ScreenShotArea():
         self.image_array = np.array(self.current_image).sum(axis=-1) // 3
 
 class MonitorVariable():
-    def __init__(self, screen_shot_area, comparison_image_path, activation_cost, on_activate_function, white_filter_on):
+    def __init__(self, screen_shot_area, comparison_image_path, activation_cost, on_activate_function, white_filter_on, split_type=None):
         self.screen_shot_area = screen_shot_area
         self.comparison_image = np.asarray(Image.open(comparison_image_path).convert('L'))
         self.activation_cost = activation_cost
         self.on_activate_function = on_activate_function
         self.white_filter_on = white_filter_on
+        self.split_type = split_type
 
         self.activated = False
         self.current_cost = None
@@ -69,18 +76,26 @@ class MonitorVariable():
             if not self.activated:
                 self.activated = True
                 
-                self.on_activate()
+                if self.split_type:
+                    self.on_activate(self.split_type)
+                else:
+                    self.on_activate()
         else:
             self.activated = False
 
-    def on_activate(self):
-        self.on_activate_function()
+    def on_activate(self, split_type=False):
+        if split_type:
+            self.on_activate_function(split_type)
+        else:
+            self.on_activate_function()
 
-def split():
+def split(split_type):
     global current_split
-    current_split += 1
-    print(f"Split {current_split} at: {time.time() - run_start_time - restarts * restart_time}")
-    asyncio.create_task(wsock.split()) 
+
+    if current_splits[current_split] == split_type:
+        current_split += 1
+        print(f"Split {current_split} at: {time.time() - run_start_time - restarts * restart_time}")
+        asyncio.create_task(wsock.split()) 
 
 
 def reset_timer():
@@ -104,19 +119,18 @@ timer_area = ScreenShotArea([0.503, 0.546, 0.536, 0.576]) #
 
 screen_shot_areas = [text_area, timer_area]
 
-checkpoint_monitor = MonitorVariable(text_area, "images/reached_checkpoint.png", 0, split, True)
-key_message_monitor = MonitorVariable(text_area, "images/thatonekeyintut.png", 0, split, True)
-secret_message_monitor = MonitorVariable(text_area, "images/secret.png", 0, split, True)
+checkpoint_monitor = MonitorVariable(text_area, "images/reached_checkpoint.png", 0, split, True, 1)
+key_message_monitor = MonitorVariable(text_area, "images/thatonekeyintut.png", 0, split, True, 3)
+secret_message_monitor = MonitorVariable(text_area, "images/secret.png", 0, split, True, 2)
 
 start_timer_monitor = MonitorVariable(timer_area, "images/timerzero.png", 0, reset_timer, True)
 end_monitor = MonitorVariable(timer_area, "images/timerzero.png", 84660, on_end_timer, True)
+# -1 = end, 1 = checkpoint, 2 = secret, 3 = thatonekey
 
 variable_monitors = [start_timer_monitor, checkpoint_monitor, key_message_monitor, end_monitor, secret_message_monitor]
 
 potential_run_end = 0
 run_start_time = 0
-
-current_split = 0
 
 restarts = 0
 restart_time = 0.15
@@ -140,7 +154,7 @@ async def main(app):
             print(f"Run finished at {potential_run_end - run_start_time - restarts * restart_time}")
             is_in_run = False
             await wsock.set_game_time(potential_run_end - run_start_time - restarts * restart_time)
-            await wsock.split()
+            split(-1)
 
         
         time_end = time.time()
