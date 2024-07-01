@@ -11,9 +11,17 @@ with open("config.json", 'r') as f:
 
 
 current_split = 0
-current_route = 0
+
+use_routes = bool(config_dict["use_routes"])
+
 routes = config_dict["routes"]
+current_route = config_dict["current_route"]
 current_splits = routes[current_route]["splits"]
+
+if use_routes:
+    print(f"Loaded splits for: {routes[current_route]['name']}")
+else:
+    print("Not loading splits")
 
 width = int(config_dict["width"])
 height = int(config_dict["height"])
@@ -93,8 +101,15 @@ class MonitorVariable():
 
 def split(split_type):
     global current_split
+    
+    do_split = False
+    if not use_routes:
+        do_split = True
 
-    if current_splits[current_split] == split_type:
+    elif current_splits[current_split] == split_type:
+        do_split = True
+
+    if do_split:
         current_split += 1
         print(f"Split {current_split} at: {time.time() - run_start_time - restarts * restart_time}")
         asyncio.create_task(wsock.split()) 

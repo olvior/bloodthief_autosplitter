@@ -3,6 +3,8 @@
     "height": 1080,
     "wait_time": 0.03,
     "end_cost": 84660,
+    "use_routes": 0,
+    "current_route": 0,
     "routes": [
         {
             "name": "Tutorial",
