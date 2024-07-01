@@ -41,7 +41,9 @@ Then simply download a zip of the code, extract it, and run `main.py`
 
 ### Usage
 
-When after you run `main.py` you should connect livesplitone and it should work
+When after you run `main.py` you should connect livesplitone and it should work.
+
+To do this, go to settings, then go to the bottom and click 'connect', then enter enter the url, by default `ws://localhost:8001`
 
 However, the autosplitter will not work if you have a screen resolution other than 1080p
 
