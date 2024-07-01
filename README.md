@@ -15,11 +15,13 @@
 - can follow a route to not split accidentaly
 
 It (probably) works on all platforms but was only tested on Linux
+
 It used to be able to split when pressing 'r' but that no longer works
 
 ### Installation
 
 You must have python installed
+
 The autosplitter uses the following libraries:
 - Pillow
 - NumPy
@@ -42,6 +44,7 @@ Then simply download a zip of the code, extract it, and run `main.py`
 When after you run `main.py` you should connect livesplitone and it should work
 
 However, the autosplitter will not work if you have a screen resolution other than 1080p
+
 **If your screen is not 1920x1080, you will have to take your own screenshots**
 
 Edit the `config.json` file or use `configure.py` to change settings
@@ -75,5 +78,4 @@ Then replace the old images in `images/` with the ones you took
 -- --
 
 That should be it but feel free to ask for help if it doesn't work, my discord is `olvior`
-
 
