@@ -19,15 +19,15 @@ It (probably) works on all platforms but was only tested on Linux
 
 ## Installation
 
-You must have python installed
+You must have python [python](https://www.python.org/downloads/) installed
 
-The autosplitter uses the following libraries:
+The autosplitter uses the following libraries which you will have to download:
 - Pillow
 - NumPy
 - MSS
 - AIOHTTP
 
-To install the libraries, use:
+To install the libraries, enter the following into the terminal:
 ```sh
 pip install Pillow numpy mss aiohttp
 ```
@@ -36,7 +36,7 @@ Or:
 python -m pip install Pillow numpy mss aiohttp
 ```
 
-Then simply download a zip of the code, extract it, and run `main.py`
+Then simply download a zip of the code, extract it, and run the file `main.py`
 
 ## Usage
 
