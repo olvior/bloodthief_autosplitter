@@ -2,7 +2,7 @@
 # Bloodthief autosplitter
 
 
-### The program:
+## The program:
 
 - is an image based autosplitter;
 - has a timer accurate to ~0.1s;
@@ -10,15 +10,14 @@
 - can split on:
     - checkpoints,
     - secrets,
-    - and the first key in the tutorial level;
-- starts and ends automatically
-- can follow a route to not split accidentaly
+    - the first key in the tutorial level,
+    - and pressing the reset key;
+- starts and ends automatically;
+- can follow a route to not split accidentaly.
 
 It (probably) works on all platforms but was only tested on Linux
 
-It used to be able to split when pressing 'r' but that no longer works
-
-### Installation
+## Installation
 
 You must have python installed
 
@@ -39,11 +38,15 @@ python -m pip install Pillow numpy mss aiohttp
 
 Then simply download a zip of the code, extract it, and run `main.py`
 
-### Usage
+## Usage
 
 When after you run `main.py` you should connect livesplitone and it should work.
 
 To do this, go to settings, then go to the bottom and click 'connect', then enter enter the url, by default `ws://localhost:8001`
+
+There should be a confirmation message in both livesplitone and the terminal.
+
+The timer should work immediatly afterwards, but see below to edit settings for more advanced usage.
 
 However, the autosplitter will not work if you have a screen resolution other than 1080p
 
@@ -65,7 +68,7 @@ Edit the `config.json` file or use `configure.py` to change settings
 - essentialy you can use routes to help the autosplitter not make mistakes and accidentaly split when it shouldn't
 
 
-### Take your own screenshots:
+## Take your own screenshots:
 To do this:
 - run `configure.py`
 - with the text area, take screenshots of the:
