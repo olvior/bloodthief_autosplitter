@@ -32,17 +32,17 @@ wait_time = config_dict["wait_time"]
 
 sct = mss.mss() # mss screenshot object
 
+reset_key = config_dict["reset_key"]
 
-#def r_press():
-#    global restarts
-#    restarts += 1
-#    split()
-#    print(f"restart no. {restarts}")
+def r_press():
+    global restarts
+    restarts += 1
+    split(4)
+    print(f"restart no. {restarts}")
 
-#from pynput import keyboard
+from pynput import keyboard
 
-#h = keyboard.GlobalHotKeys({'r': r_press}).start()
-# hotkey stuff not working at the moment
+h = keyboard.GlobalHotKeys({reset_key: r_press}).start()
 
 class ScreenShotArea():
     def __init__(self, bbox_ratio):
@@ -142,7 +142,7 @@ secret_message_monitor = MonitorVariable(text_area, "images/secret.png", 0, spli
 
 start_timer_monitor = MonitorVariable(timer_area, "images/timerzero.png", 0, reset_timer, True)
 end_monitor = MonitorVariable(timer_area, "images/timerzero.png", end_screen_cost, on_end_timer, True)
-# -1 = end, 1 = checkpoint, 2 = secret, 3 = thatonekey
+# -1 = end, 1 = checkpoint, 2 = secret, 3 = thatonekey, 4 = reset
 
 variable_monitors = [start_timer_monitor, checkpoint_monitor, key_message_monitor, end_monitor, secret_message_monitor]
 

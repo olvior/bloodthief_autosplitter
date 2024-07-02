@@ -3,7 +3,8 @@
     "height": 1080,
     "wait_time": 0.03,
     "end_cost": 84660,
-    "use_routes": 0,
+    "reset_key": "r",
+    "use_routes": 1,
     "current_route": 0,
     "routes": [
         {
