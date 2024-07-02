@@ -45,6 +45,10 @@ When after you run `main.py` you should connect livesplitone and it should work.
 
 To do this, go to settings, then go to the bottom and click 'connect', then enter enter the url, by default `ws://localhost:8001`
 
+There should be a confirmation message in both livesplitone and the terminal.
+
+The timer should work immediatly afterwards, but see below to edit settings for more advanced usage.
+
 However, the autosplitter will not work if you have a screen resolution other than 1080p
 
 **If your screen is not 1920x1080, you will have to take your own screenshots**
