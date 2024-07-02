@@ -67,12 +67,13 @@ def change_settings():
         for idx, i in enumerate(config_dict.keys()):
             print(f"{i}, current value: {config_dict[i]} [{idx}]")
         
+
         choice = int(input())
         choice_key = list(config_dict.keys())[choice]
         print(choice_key)
 
-        
-        new_value = float(input(f"Enter the new value for {choice_key}: "))
+        choice_type = type(config_dict[choice_key])
+        new_value = choice_type(input(f"Enter the new value for {choice_key}: "))
         
         config_dict[choice_key] = new_value
         
