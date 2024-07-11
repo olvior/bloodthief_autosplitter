@@ -4,8 +4,8 @@
     "wait_time": 0.03,
     "end_cost": 84660,
     "reset_key": "r",
-    "use_routes": 1,
-    "current_route": 0,
+    "use_routes": 0,
+    "current_route": 1,
     "routes": [
         {
             "name": "Tutorial",
@@ -14,6 +14,16 @@
                 1,
                 2,
                 3,
+                -1
+            ]
+        },
+        {
+            "name": "Level 1",
+            "splits": [
+                2,
+                1,
+                4,
+                4,
                 -1
             ]
         }
