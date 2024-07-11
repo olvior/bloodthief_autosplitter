@@ -112,7 +112,7 @@ def split(split_type):
     if do_split:
         current_split += 1
         print(f"Split {current_split} at: {time.time() - run_start_time - restarts * restart_time}")
-        asyncio.create_task(wsock.split()) 
+        asyncio.get_event_loop().create_task(wsock.split()) 
 
 
 def reset_timer():
@@ -122,7 +122,7 @@ def reset_timer():
     restarts = 0
     is_in_run = True
     print("Reset timer")
-    asyncio.create_task(wsock.start())
+    asyncio.get_event_loop().create_task(wsock.start())
 
 def on_end_timer():
     global potential_run_end
@@ -189,7 +189,7 @@ from wsock import app, web
 import wsock
 
 async def start_background_tasks(app):
-    asyncio.create_task(main(app))
+    asyncio.get_event_loop().create_task(main(app))
 
 app.on_startup.append(start_background_tasks)
 
