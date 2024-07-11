@@ -34,8 +34,6 @@ sct = mss.mss() # mss screenshot object
 
 reset_key = config_dict["reset_key"]
 
-<<<<<<< HEAD
-
 hotkey_queue = asyncio.Queue()
 
 async def queue_handler():
