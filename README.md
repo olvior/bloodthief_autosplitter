@@ -39,9 +39,20 @@ Or, if that doesn't work, try:
 python -m pip install Pillow numpy mss aiohttp pynput
 ```
 
-Then simply download a zip of the code, extract it, and run `main.py`
+Then simply download a zip of the code and extract it.
 
 ## Usage
+
+You should run `main.py` in the terminal.
+
+To do this, open the command prompt/terminal.
+
+Then enter `cd Downloads` to enter the downloads folder.
+
+Then enter `cd ` with the name of the extracted code.
+
+Then enter `python main.py` to run it.
+
 
 When after you run `main.py` you should connect livesplitone and it should work.
 
