@@ -1,6 +1,9 @@
 
 # Bloodthief autosplitter
 
+This is an autosplitter that connects to [LivesplitOne](<https://one.livesplit.org/>) and takes screenshots to see when to split.
+See `Installation` below
+
 
 ## The program:
 
@@ -19,30 +22,44 @@ It (probably) works on all platforms but was only tested on Linux
 
 ## Installation
 
-You must have python [python](https://www.python.org/downloads/) installed
+You must have [python](https://www.python.org/downloads/) installed
 
-The autosplitter uses the following libraries which you will have to download:
+The autosplitter uses the following libraries:
 - Pillow
 - NumPy
 - MSS
 - AIOHTTP
 
-To install the libraries, enter the following into the terminal:
+To install the libraries, use:
 ```sh
-pip install Pillow numpy mss aiohttp
+pip install Pillow numpy mss aiohttp pynput
 ```
-Or:
+Or, if that doesn't work, try:
 ```sh
-python -m pip install Pillow numpy mss aiohttp
+python -m pip install Pillow numpy mss aiohttp pynput
 ```
 
-Then simply download a zip of the code, extract it, and run the file `main.py`
+Then simply download a zip of the code and extract it.
 
 ## Usage
 
-When after you run `main.py` you should connect livesplitone and it should work.
+You should run `main.py` in the terminal.
 
-To do this, go to settings, then go to the bottom and click 'connect', then enter enter the url, by default `ws://localhost:8001`
+To do this, open the command prompt/terminal.
+
+Then enter `cd Downloads` to enter the downloads folder.
+
+Then enter `cd ` with the name of the extracted code.
+
+Then enter `python main.py` to run it.
+
+
+<img width="267" alt="Screenshot 2024-07-11 at 17 13 09" src="https://github.com/olvior/bloodthief_autosplitter/assets/78297864/b8e93497-1f10-4104-95a4-6dc16c253e58">
+
+<img width="526" alt="Screenshot 2024-07-11 at 17 13 29" src="https://github.com/olvior/bloodthief_autosplitter/assets/78297864/efc46cf7-540d-4242-8f4f-817e2fa38bdd">
+
+<img width="267" alt="Screenshot 2024-07-11 at 17 13 56" src="https://github.com/olvior/bloodthief_autosplitter/assets/78297864/a72338b9-5e29-4d63-b057-f278a07c8e37">
+
 
 There should be a confirmation message in both livesplitone and the terminal.
 
@@ -51,6 +68,21 @@ The timer should work immediatly afterwards, but see below to edit settings for 
 However, the autosplitter will not work if you have a screen resolution other than 1080p
 
 **If your screen is not 1920x1080, you will have to take your own screenshots**
+
+## Take your own screenshots:
+To do this:
+- run `configure.py`
+- with the text area, take screenshots of the:
+    - checkpoint text
+    - found secret text
+    - and the text that comes up after you get the first key in the tutorial level
+- with the timer area, take a screenshot of the:
+    - timer when it says 00:00, within the first second
+
+Then replace the old images in `images/` with the ones you took
+
+
+## Configuration
 
 Edit the `config.json` file or use `configure.py` to change settings
 - 'width' and 'height' are simply your screen's width and height

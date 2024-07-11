@@ -5,7 +5,7 @@
     "end_cost": 84660,
     "reset_key": "r",
     "use_routes": 0,
-    "current_route": 1,
+    "current_route": 0,
     "routes": [
         {
             "name": "Tutorial",

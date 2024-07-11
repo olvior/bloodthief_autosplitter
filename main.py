@@ -34,6 +34,7 @@ sct = mss.mss() # mss screenshot object
 
 reset_key = config_dict["reset_key"]
 
+<<<<<<< HEAD
 
 hotkey_queue = asyncio.Queue()
 
@@ -121,7 +122,7 @@ def split(split_type):
     if do_split:
         current_split += 1
         print(f"Split {current_split} at: {time.time() - run_start_time - restarts * restart_time}")
-        asyncio.Task(wsock.split()) 
+        asyncio.get_event_loop().create_task(wsock.split()) 
 
 
 def reset_timer():
@@ -199,7 +200,6 @@ import wsock
 
 async def start_background_tasks(app):
     asyncio.get_event_loop().create_task(queue_handler())
-    asyncio.get_event_loop().create_task(main(app))
 
 app.on_startup.append(start_background_tasks)
 
