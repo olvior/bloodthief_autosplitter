@@ -32,11 +32,11 @@ The autosplitter uses the following libraries:
 
 To install the libraries, use:
 ```sh
-pip install Pillow numpy mss aiohttp
+pip install Pillow numpy mss aiohttp pynput
 ```
 Or, if that doesn't work, try:
 ```sh
-python -m pip install Pillow numpy mss aiohttp
+python -m pip install Pillow numpy mss aiohttp pynput
 ```
 
 Then simply download a zip of the code, extract it, and run `main.py`
