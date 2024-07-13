@@ -38,7 +38,7 @@ hotkey_queue = asyncio.Queue()
 
 async def queue_handler():
     while True:
-        value = await queue.get()
+        value = await hotkey_queue.get()
         split(4)
 
 def r_press():
