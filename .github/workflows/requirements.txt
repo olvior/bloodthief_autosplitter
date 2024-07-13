@@ -1,1 +1,6 @@
+Pillow
+numpy
+mss
+aiohttp
+pynput
 
