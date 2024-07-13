@@ -29,17 +29,6 @@ jobs:
         python -m pip install Pillow numpy mss aiohttp pynput nuitka
         echo "Finished installing dependencies"
     
-    - name: nuitka setup
-      run: |
-        echo "NUITKA_CACHE_DIR=${{ github.action_path }}/nuitka/cache" >> $GITHUB_ENV
-
-
-  
-    - name: Install ccache
-      run: |
-        sudo apt-get install -y ccache
-
-    
     - name: Compile
       run: |
         python -m nuitka --standalone --onefile --show-progress --remove-output main.py
