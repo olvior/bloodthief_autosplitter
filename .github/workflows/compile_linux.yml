@@ -36,3 +36,11 @@ jobs:
         python -m nuitka --standalone --onefile --show-progress --remove-output -o out main.py
       working-directory:
         .
+    - name: List
+      run: |
+        ls -R
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: build
+        path: out
