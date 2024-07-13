@@ -28,7 +28,6 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install Pillow numpy mss aiohttp pynput nuitka
         echo "Finished installing dependencies"
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     
     - name: nuitka setup
       run: |
