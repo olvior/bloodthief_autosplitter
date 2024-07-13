@@ -31,6 +31,6 @@ jobs:
     
     - name: Compile
       run: |
-        python -m nuitka --standalone --onefile --show-progress --remove-output main.py
+        python -m nuitka --standalone --onefile --show-progress --remove-output -o bloodthief_autosplitter/out main.py
       working-directory:
         .
