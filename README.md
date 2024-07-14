@@ -2,6 +2,7 @@
 # Bloodthief autosplitter
 
 This is an autosplitter that connects to [LivesplitOne](<https://one.livesplit.org/>) and takes screenshots to see when to split.
+
 See `Installation` below
 
 
@@ -22,6 +23,21 @@ It (probably) works on all platforms but was only tested on Linux
 
 ## Installation
 
+You can use the program in two different ways, either the easy way by running an executable or the harder way by running a python file.
+
+### With the executable
+
+To run with the executable you must first download the respective zip file from the releases page.
+
+Then extract it and run the file `main.exe` (simply `main` on Linux)`
+
+It may take a second to startup, but it should launch a console and start printing out messages. 
+
+However if this does not work you should try to install with python.
+
+
+### With python
+
 You must have [python](https://www.python.org/downloads/) installed
 
 The autosplitter uses the following libraries:
@@ -32,18 +48,12 @@ The autosplitter uses the following libraries:
 
 To install the libraries, use:
 ```sh
-pip install Pillow numpy mss aiohttp pynput
-```
-Or, if that doesn't work, try:
-```sh
 python -m pip install Pillow numpy mss aiohttp pynput
 ```
 
 Then simply download a zip of the code and extract it.
 
-## Usage
-
-You should run `main.py` in the terminal.
+Then run `main.py` in the terminal.
 
 To do this, open the command prompt/terminal.
 
@@ -53,6 +63,10 @@ Then enter `cd ` with the name of the extracted code.
 
 Then enter `python main.py` to run it.
 
+
+## Usage
+
+Once you have the program running, connect to livesplitone by entering `ws://localhost:8001` into the connect option.
 
 <img width="267" alt="Screenshot 2024-07-11 at 17 13 09" src="https://github.com/olvior/bloodthief_autosplitter/assets/78297864/b8e93497-1f10-4104-95a4-6dc16c253e58">
 
@@ -67,7 +81,7 @@ The timer should work immediatly afterwards, but see below to edit settings for 
 
 However, the autosplitter will not work if you have a screen resolution other than 1080p
 
-**If your screen is not 1920x1080, you will have to take your own screenshots**
+**If your screen is not 1920x1080, you _must_ take your own screenshots**
 
 ## Take your own screenshots:
 To do this:
